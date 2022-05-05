@@ -1,0 +1,10 @@
+<h1> {{ question.question_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    <!-- pluralize는 복수면 복수, 단수면 단수처리해주는 장고에서 제공하는 template 기능 중 하나-->    
+    {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}"> Vote again? </a>"
